@@ -1,0 +1,56 @@
+<div ng-controller="FormController" id="wrapForm">
+
+    <form class="form-horizontal" name="frm" ng-submit="addUserInfo()">
+        <!--Code to validate first name is written here-->
+        <div class="form-group">
+            <label id="label" class="control-label">Nombre:</label>
+            <input type="text" class="form-control" name="username" ng-model="user.nombre" placeholder="Enter First Name"
+                autocomplete="off" required />
+        </div>
+
+        <div class="form-group">
+                <label id="label" class="control-label">Fecha de nacimiento:</label>
+                <input type="date"
+                ng-model="user.fechaNacimiento"
+                [name="string"]
+                [min="string"]
+                [max="string"]
+                [ng-min=""]
+                [ng-max=""]
+                [required="string"]
+                [ng-required="string"]
+                [ng-change="string"]>
+        </div>
+       
+      
+        <!--Code to validate gender field-->
+        <div class="form-group">
+            <label id="label">Sexo:</label>
+            Masculino<input type="radio" name="gender" ng-model="user.gender" value="Masculino"
+                required>
+            Femenino <input type="radio" name="gender" ng-model="user.gender" value="Femenino"
+                required>
+<!--             <span class="msg" ng-show="frm.gender.$error.required">Seleccione</span> -->
+        </div>
+        <!--Code to validate country field-->
+        <div class="form-group">
+            <label id="label" class="control-label">¿Que es lo que más te gusta?</label>
+
+            <select data-ng-options="o.name for o in likes"  class="form-control" ng-model="item" required ng-change="changeLikes()"></select>
+            <span class="msg" ng-show="frm.cont.$error.required">Select a value</span>
+        </div>
+
+        <div class="users" ng-show="gustoEspacio.length > 1" style="width: 4em">
+            <h3> -- Selecciona --</h3>    
+            {{ gustoEspacio}}
+             </div>
+
+        <!--Code to disable submit button is written here-->
+        <button style="padding: 6px; margin: 1em">Guardar</button>
+
+        <div class="users" ng-show="users.length  > 1" style="width: 4em">
+                {{users}}
+             </div>
+    </form>
+
+</div>
